@@ -5,7 +5,7 @@ export default async function Home() {
   const posts = await api.post.getAllPosts.query()
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-center bg-gradient-to-b from-[#2e026d] to-[#15162c] text-white">
+    <main className="flex min-h-screen flex-col items-center justify-center">
       { posts.map((post) => {
         return (
           <div key={post.id}>
@@ -13,15 +13,7 @@ export default async function Home() {
           </div>
         )
       })}
-      <CrudShowcase />
-    </main>
-  );
-}
-
-function CrudShowcase() {
-  return (
-    <div className="w-full max-w-xs">
       <CreatePost />
-    </div>
+    </main>
   );
 }
