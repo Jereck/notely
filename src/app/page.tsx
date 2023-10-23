@@ -18,7 +18,7 @@ export default async function Home() {
   );
 }
 
-async function CrudShowcase() {
+function CrudShowcase() {
   return (
     <div className="w-full max-w-xs">
       <CreatePost />
