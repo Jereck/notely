@@ -1,11 +1,13 @@
 // Example model schema from the Drizzle docs
 // https://orm.drizzle.team/docs/sql-schema-declaration
 
-import { sql } from "drizzle-orm";
+import { relations, sql } from "drizzle-orm";
 import {
+  int,
   bigint,
   index,
   mysqlTableCreator,
+  text,
   timestamp,
   varchar,
 } from "drizzle-orm/mysql-core";
@@ -18,17 +20,15 @@ import {
  */
 export const mysqlTable = mysqlTableCreator((name) => `notely_${name}`);
 
-export const posts = mysqlTable(
-  "post",
+export const notes = mysqlTable(
+  "note",
   {
     id: bigint("id", { mode: "number" }).primaryKey().autoincrement(),
-    name: varchar("name", { length: 256 }),
-    createdAt: timestamp("created_at")
-      .default(sql`CURRENT_TIMESTAMP`)
-      .notNull(),
-    updatedAt: timestamp("updatedAt").onUpdateNow(),
-  },
-  (example) => ({
-    nameIndex: index("name_idx").on(example.name),
-  })
-);
+    title: varchar("title", { length: 256 }),
+    details: text("details"),
+    createdAt: timestamp("created_at").default(sql`CURRENT_TIMESTAMP`).notNull(),
+    updatedAt: timestamp("updated_at").onUpdateNow(),
+
+    user_id: text("user_id")
+  }
+)
