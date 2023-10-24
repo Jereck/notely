@@ -6,9 +6,7 @@ import { headers } from "next/headers";
 import { TRPCReactProvider } from "~/trpc/react";
 import Providers from "./providers";
 import Header from "./_components/header";
-import { ClerkProvider } from "@clerk/nextjs";
-import SideMenu from "./_components/side-menu";
-import NotesList from "./_components/notes-list";
+import { ClerkProvider, currentUser } from "@clerk/nextjs";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -21,30 +19,21 @@ export const metadata = {
   icons: [{ rel: "icon", url: "/favicon.ico" }],
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  const user = await currentUser()
+
   return (
     <ClerkProvider>
       <html lang="en">
         <body className={`font-sans ${inter.variable}`}>
           <Providers>
             <TRPCReactProvider headers={headers()}>
-              <Header />
-              <SideMenu />
-              <div className="grid grid-cols-1 md:grid-cols-12 md:mx-40 md:my-12 m-6 gap-4">
-
-                <div className="md:col-span-4 hidden md:block">
-                  <NotesList />
-                </div>
-
-                <div className="md:col-span-8 col-span-1">
-                  {children}
-                </div>
-
-              </div>
+              { user && <Header /> }
+              {children}
             </TRPCReactProvider>
           </Providers>
         </body>
