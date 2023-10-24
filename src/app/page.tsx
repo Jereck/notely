@@ -1,4 +1,3 @@
-import { CreatePost } from "~/app/_components/create-post";
 import WysiwygMenu from "./_components/wysiwyg-menu";
 
 export default async function Home() {
