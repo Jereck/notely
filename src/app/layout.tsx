@@ -5,7 +5,6 @@ import { headers } from "next/headers";
 
 import { TRPCReactProvider } from "~/trpc/react";
 import Providers from "./providers";
-import Header from "./_components/header";
 import { ClerkProvider, currentUser } from "@clerk/nextjs";
 
 const inter = Inter({
@@ -24,7 +23,6 @@ export default async function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const user = await currentUser()
 
   return (
     <ClerkProvider>
@@ -32,7 +30,6 @@ export default async function RootLayout({
         <body className={`font-sans ${inter.variable}`}>
           <Providers>
             <TRPCReactProvider headers={headers()}>
-              { user && <Header /> }
               {children}
             </TRPCReactProvider>
           </Providers>

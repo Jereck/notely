@@ -7,26 +7,13 @@ import { Sun, Moon } from "lucide-react"
 import { UserButton } from "@clerk/nextjs"
 import Link from "next/link";
 
-export default function Header() {
+export default function NotesHeader() {
   const { theme, setTheme } = useTheme()
 
   return (
-    <header className="sm:flex sm:justify-between py-3 px-4 border-b">
+    <header className="sm:flex sm:justify-between px-4 border-b">
       <div className="relative px-4 sm:px-6 lg:px-8 flex h-16 items-center justify-between w-full">
-        <div className="flex items-center w-full justify-between">
-          <div className="text-xl font-bold"><span className="text-blue-400">Note</span>ly</div>
-
-          <nav className="mx-6 items-center space-x-4 lg:space-x-6 hidden md:block">
-              <Button variant="light">
-                <Link
-                  key="home"
-                  href="/"
-                  className="text-sm font-medium transition-colors"
-                >
-                  Home
-                </Link>
-              </Button>
-          </nav>
+        <div className="flex items-center w-full justify-end">
           
           <div className="flex">
             <Button
