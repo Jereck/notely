@@ -2,10 +2,9 @@
 
 import React from "react";
 import { useTheme } from "next-themes";
-import { Button, Avatar } from "@nextui-org/react";
+import { Button } from "@nextui-org/react";
 import { Sun, Moon } from "lucide-react"
 import { UserButton } from "@clerk/nextjs"
-import Link from "next/link";
 
 export default function NotesHeader() {
   const { theme, setTheme } = useTheme()

@@ -3,9 +3,7 @@
 
 import { relations, sql } from "drizzle-orm";
 import {
-  int,
   bigint,
-  index,
   mysqlTableCreator,
   text,
   timestamp,
