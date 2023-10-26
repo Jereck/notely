@@ -1,6 +1,6 @@
 "use client";
 
-import React from 'react'
+import React, { Dispatch, SetStateAction } from 'react'
 import dayjs from 'dayjs';
 import NotesListHeader from '../notes-list-header'
 
@@ -13,7 +13,8 @@ type NotesProps = {
   user_id: string | null;
 }[] | undefined
 
-const NotesList = ({ notes, setIsNoteSelected }: { notes: NotesProps, setIsNoteSelected: any }) => {
+
+const NotesList = ({ notes, setIsNoteSelected }: { notes: NotesProps, setIsNoteSelected: Dispatch<SetStateAction<number>> }) => {
   return (
     <div>
       <NotesListHeader />

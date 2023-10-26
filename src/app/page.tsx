@@ -10,7 +10,7 @@ import { api } from "~/trpc/react";
 
 
 export default function Home() {
-  const [isNoteSelected, setIsNoteSelected] = useState(null)
+  const [isNoteSelected, setIsNoteSelected] = useState<number>(0)
   const { isLoaded, isSignedIn, user } = useUser();
 
   if (!user) return <div>Loading...</div>

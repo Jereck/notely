@@ -4,6 +4,6 @@ export const filterUserForClient = (user: User) => {
     id: user.id,
     username: user.username,
     imageUrl: user.imageUrl,
-    externalUsername: user.externalAccounts.find((externalAccount) => externalAccount.provider === "oauth_google")?.username || null
+    externalUsername: user.externalAccounts.find((externalAccount) => externalAccount.provider === "oauth_google")?.username ?? null
   }
 }
